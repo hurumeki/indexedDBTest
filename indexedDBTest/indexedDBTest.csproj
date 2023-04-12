@@ -30,6 +30,12 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -52,4 +58,19 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Remove="Resources\EmptyHtmlFile.html" />
+	  <None Remove="Resources\EmptyHtmlFile %28コピー%29.html" />
+	  <None Remove="Resources\index %28コピー%29.js" />
+	  <None Remove="Resources\Raw\clear.html" />
+	  <None Remove="Resources\Raw\clear.js" />
+	  <None Remove="Resources\Raw\index.html" />
+	  <None Remove="Resources\Raw\index.js" />
+	</ItemGroup>
+	<ItemGroup>
+	  <BundleResource Include="Resources\Raw\clear.html" />
+	  <BundleResource Include="Resources\Raw\clear.js" />
+	  <BundleResource Include="Resources\Raw\index.html" />
+	  <BundleResource Include="Resources\Raw\index.js" />
+	</ItemGroup>
 </Project>
